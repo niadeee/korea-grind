@@ -25,8 +25,8 @@ export default function App() {
   if (loading) {
         return (
                 <div className="min-h-screen bg-white flex items-center justify-center">
-                        <div className="text-black font-mono text-xs tracking-widest">LOADING</div>div>
-                </div>div>
+                        <div className="text-black font-mono text-xs tracking-widest">LOADING</div>
+                </div>
               )
   }
   
@@ -44,8 +44,8 @@ export default function App() {
                                                   providers={['google']}
                                                   onlyThirdPartyProviders={false}
                                                 />
-                          </div>div>
-                  </div>div>
+                          </div>
+                  </div>
                 )
     }
   
