@@ -1,0 +1,26 @@
+{
+    "name": "korea-grind",
+    "private": true,
+    "version": "0.0.1",
+    "type": "module",
+    "scripts": {
+          "dev": "vite",
+          "build": "vite build",
+          "preview": "vite preview"
+    },
+    "dependencies": {
+          "react": "^18.3.1",
+          "react-dom": "^18.3.1",
+          "lucide-react": "^0.383.0",
+          "@supabase/supabase-js": "^2.38.0",
+          "@supabase/auth-ui-react": "^0.4.7",
+          "@supabase/auth-ui-shared": "^0.1.0"
+    },
+    "devDependencies": {
+          "@vitejs/plugin-react": "^4.2.0",
+          "vite": "^5.0.0",
+          "tailwindcss": "^3.3.0",
+          "postcss": "^8.4.31",
+          "autoprefixer": "^10.4.16"
+    }
+}
