@@ -138,7 +138,7 @@ export default function KoreaGrind() {
   }
 
   return (
-    <div className="min-h-screen bg-white text-black pb-24" style={{ fontFamily: "'Inter Tight', system-ui, sans-serif" }}>
+    <div className="flex h-screen flex-col md:flex-row bg-white text-black" style={{ fontFamily: "'Inter Tight', system-ui, sans-serif" }}>
       <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&family=Archivo+Black&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
       <style>{`
         @keyframes pulseScale { 0% { transform: scale(1); } 50% { transform: scale(1.04); } 100% { transform: scale(1); } }
@@ -150,7 +150,22 @@ export default function KoreaGrind() {
         .mono { font-family: 'JetBrains Mono', monospace; }
       `}</style>
 
-      {unlockedToast && (
+      
+
+      {/* Desktop Sidebar Navigation */}
+      <nav className="hidden md:flex flex-col w-40 bg-black text-white border-r-2 border-black overflow-y-auto">
+        <div className="p-4 heading text-sm" style={{ color: ACCENT }}>KOREA GRIND</div>
+        <NavBtn icon={<Target size={18} strokeWidth={2.5} />} label="home" active={activeTab === 'home'} onClick={() => setActiveTab('home')} />
+        <NavBtn icon={<DollarSign size={18} strokeWidth={2.5} />} label="money" active={activeTab === 'money'} onClick={() => setActiveTab('money')} />
+        <NavBtn icon={<Shield size={18} strokeWidth={2.5} />} label="cyber" active={activeTab === 'cyber'} onClick={() => setActiveTab('cyber')} />
+        <NavBtn icon={<CheckCircle2 size={18} strokeWidth={2.5} />} label="list" active={activeTab === 'list'} onClick={() => setActiveTab('list')} />
+        <NavBtn icon={<Book size={18} strokeWidth={2.5} />} label="log" active={activeTab === 'log'} onClick={() => setActiveTab('log')} />
+        <NavBtn icon={<Lightbulb size={18} strokeWidth={2.5} />} label="tips" active={activeTab === 'tips'} onClick={() => setActiveTab('tips')} />
+      </nav>
+
+      {/* Main content area */}
+      <div className="flex-1 flex flex-col overflow-hidden">
+{unlockedToast && (
         <div className="fixed top-4 left-4 right-4 z-[60] slide-up">
           <div className="bg-black text-white rounded-2xl p-4 flex items-center gap-3 shadow-2xl">
             <div className="w-10 h-10 rounded-full flex items-center justify-center shrink-0" style={{ background: ACCENT }}>
@@ -166,7 +181,7 @@ export default function KoreaGrind() {
       )}
 
       <header className="sticky top-0 z-40 bg-white border-b-2 border-black">
-        <div className="px-5 py-4 flex items-center justify-between">
+        <div className="px-5 md:px-8 py-4 flex items-center justify-between">
           <div>
             <div className="heading text-2xl leading-none">KOREA GRIND</div>
             <div className="text-[10px] mono uppercase tracking-widest text-neutral-500 mt-1">// busan · sept 26</div>
@@ -178,7 +193,7 @@ export default function KoreaGrind() {
         </div>
       </header>
 
-      <main className="px-5 py-5">
+      <main className="flex-1 overflow-y-auto px-5 md:px-8 py-5">
         {activeTab === 'home' && <Home data={data} saveData={saveData} netSaved={netSaved} savingsPercent={savingsPercent} weeklyTarget={weeklyTarget} weeksToKorea={weeksToKorea} daysToKorea={daysToKorea} today={today} checklistComplete={checklistComplete} checklistTotal={checklistTotal} checklistPercent={checklistPercent} setActiveTab={setActiveTab} triggerPulse={triggerPulse} pulse={pulse} />}
         {activeTab === 'money' && <Money data={data} saveData={saveData} netSaved={netSaved} totalIncome={totalIncome} totalExpenses={totalExpenses} savingsPercent={savingsPercent} weeklyTarget={weeklyTarget} triggerPulse={triggerPulse} pulse={pulse} />}
         {activeTab === 'cyber' && <Cyber data={data} saveData={saveData} triggerPulse={triggerPulse} pulse={pulse} />}
@@ -187,7 +202,7 @@ export default function KoreaGrind() {
         {activeTab === 'tips' && <Tips />}
       </main>
 
-      <nav className="fixed bottom-0 left-0 right-0 bg-white border-t-2 border-black z-50">
+      <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t-2 border-black z-50">
         <div className="grid grid-cols-6">
           <NavBtn icon={<Target size={18} strokeWidth={2.5} />} label="home" active={activeTab === 'home'} onClick={() => setActiveTab('home')} />
           <NavBtn icon={<DollarSign size={18} strokeWidth={2.5} />} label="money" active={activeTab === 'money'} onClick={() => setActiveTab('money')} />
@@ -197,6 +212,10 @@ export default function KoreaGrind() {
           <NavBtn icon={<Lightbulb size={18} strokeWidth={2.5} />} label="tips" active={activeTab === 'tips'} onClick={() => setActiveTab('tips')} />
         </div>
       </nav>
+      
+      {/* Mobile-only spacer to prevent content overlap */}
+      <div className="md:hidden h-24"></div>
+      </div>
     </div>
   );
 }
