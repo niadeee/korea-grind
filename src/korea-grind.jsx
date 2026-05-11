@@ -141,7 +141,7 @@ export default function KoreaGrind() {
   }
 
   return (
-    <div className="flex h-screen flex-col md:flex-row bg-gradient-to-br from-slate-50 to-slate-100 text-slate-900" style={{ fontFamily: "'Inter Tight', system-ui, sans-serif" }}>
+    <div className="flex h-screen flex-col md:flex-row bg-gradient-to-br from-blue-50 to-indigo-50 text-slate-900" style={{ fontFamily: "'Inter Tight', system-ui, sans-serif" }}>
       <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&family=Archivo+Black&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
       <style>{`
         @keyframes pulseScale { 0% { transform: scale(1); } 50% { transform: scale(1.04); } 100% { transform: scale(1); } }
