@@ -141,7 +141,7 @@ export default function KoreaGrind() {
   }
 
   return (
-    <div className="flex h-screen flex-col md:flex-row bg-gradient-to-br from-blue-50 to-indigo-50 text-slate-900" style={{ fontFamily: "'Inter Tight', system-ui, sans-serif" }}>
+    <div className="flex h-screen flex-col md:flex-row bg-gray-50 text-slate-900" style={{ fontFamily: "'Inter Tight', system-ui, sans-serif" }}>
       <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&family=Archivo+Black&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
       <style>{`
         @keyframes pulseScale { 0% { transform: scale(1); } 50% { transform: scale(1.04); } 100% { transform: scale(1); } }
@@ -194,7 +194,7 @@ export default function KoreaGrind() {
         </div>
       )}
 
-      <header className="sticky top-0 z-40 bg-white/80 backdrop-blur border-b border-slate-200">
+      <header className="sticky top-0 z-40 bg-white/80 backdrop-blur border-b border-gray-200">
         <div className="px-5 md:px-8 py-5 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ background: ACCENT }}>
@@ -214,7 +214,7 @@ export default function KoreaGrind() {
         </div>
       </header>
 
-      <main className="flex-1 overflow-y-auto px-4 md:px-8 py-6">
+      <main className="flex-1 overflow-y-auto px-6 md:px-12 py-8">
         {activeTab === 'home' && <Home data={data} saveData={saveData} netSaved={netSaved} savingsPercent={savingsPercent} weeklyTarget={weeklyTarget} weeksToKorea={weeksToKorea} daysToKorea={daysToKorea} today={today} checklistComplete={checklistComplete} checklistTotal={checklistTotal} checklistPercent={checklistPercent} setActiveTab={setActiveTab} triggerPulse={triggerPulse} pulse={pulse} />}
         {activeTab === 'money' && <Money data={data} saveData={saveData} netSaved={netSaved} totalIncome={totalIncome} totalExpenses={totalExpenses} savingsPercent={savingsPercent} weeklyTarget={weeklyTarget} triggerPulse={triggerPulse} pulse={pulse} />}
         {activeTab === 'cyber' && <Cyber data={data} saveData={saveData} triggerPulse={triggerPulse} pulse={pulse} />}
