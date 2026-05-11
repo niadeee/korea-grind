@@ -167,8 +167,8 @@ export default function KoreaGrind() {
       {/* Desktop Sidebar Navigation */}
       <nav className="hidden md:flex flex-col w-48 bg-gradient-to-b from-slate-900 to-slate-800 text-white border-r border-slate-700 overflow-y-auto">
         <div className="px-4 py-5 border-b border-slate-700">
-        <div className="heading text-xs font-black text-slate-400 uppercase tracking-widest">Navigation</div>
-      </div>
+          <div className="heading text-xs font-black text-slate-400 uppercase tracking-widest">Navigation</div>
+        </div>
         <NavBtn icon={<Target size={18} strokeWidth={2.5} />} label="home" active={activeTab === 'home'} onClick={() => setActiveTab('home')} />
         <NavBtn icon={<DollarSign size={18} strokeWidth={2.5} />} label="money" active={activeTab === 'money'} onClick={() => setActiveTab('money')} />
         <NavBtn icon={<Shield size={18} strokeWidth={2.5} />} label="cyber" active={activeTab === 'cyber'} onClick={() => setActiveTab('cyber')} />
