@@ -251,7 +251,7 @@ function NavBtn({ icon, label, active, onClick }) {
       <span className="text-[8px] font-semibold uppercase tracking-widest">{label}</span>
     </button>
   );
-  );
+);
 }
 
 function Home({ data, saveData, netSaved, savingsPercent, weeklyTarget, daysToKorea, today, checklistComplete, checklistTotal, checklistPercent, setActiveTab, triggerPulse, pulse }) {
