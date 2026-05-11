@@ -2,8 +2,11 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { DollarSign, Shield, Plane, Book, CheckCircle2, Circle, Flame, Trash2, TrendingUp, Lightbulb, ChevronRight, Plus, X, Target, Zap, Award, Snowflake, ArrowUp, ArrowDown, Calendar, Lock, AlertCircle, Edit2, Settings } from 'lucide-react';
 
 const ACCENT = '#0047FF';
-const SUCCESS = '#00B96B';
-const DANGER = '#E5484D';
+const SUCCESS = '#10B981';
+const DANGER = '#EF4444';
+const BG_CARD = '#F8FAFC';
+const TEXT_MUTED = '#64748B';
+const BORDER_COLOR = '#E2E8F0';
 const DEPARTURE = new Date('2026-09-01T00:00:00');
 const SAVINGS_GOAL = 15000;
 
@@ -138,23 +141,34 @@ export default function KoreaGrind() {
   }
 
   return (
-    <div className="flex h-screen flex-col md:flex-row bg-white text-black" style={{ fontFamily: "'Inter Tight', system-ui, sans-serif" }}>
+    <div className="flex h-screen flex-col md:flex-row bg-gradient-to-br from-slate-50 to-slate-100 text-slate-900" style={{ fontFamily: "'Inter Tight', system-ui, sans-serif" }}>
       <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&family=Archivo+Black&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
       <style>{`
         @keyframes pulseScale { 0% { transform: scale(1); } 50% { transform: scale(1.04); } 100% { transform: scale(1); } }
         @keyframes slideUp { 0% { opacity: 0; transform: translateY(20px); } 100% { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { 0% { opacity: 0; } 100% { opacity: 1; } }
         .pulse-anim { animation: pulseScale 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
         .slide-up { animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+        .fade-in { animation: fadeIn 0.3s ease-in; }
         .progress-fill { transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
         .heading { font-family: 'Archivo Black', sans-serif; letter-spacing: -0.02em; }
         .mono { font-family: 'JetBrains Mono', monospace; }
+        .card { background: #FFFFFF; border-radius: 12px; border: 1px solid #E2E8F0; padding: 20px; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); transition: all 0.2s ease; }
+        .card:hover { box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); }
+        .stat-card { background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%); }
+        .btn-primary { background: #0047FF; color: white; border: none; border-radius: 8px; padding: 10px 16px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+        .btn-primary:hover { background: #0038CC; transform: translateY(-1px); box-shadow: 0 4px 8px rgba(0, 71, 255, 0.2); }
+        .btn-secondary { background: #F1F5F9; color: #1E293B; border: 1px solid #E2E8F0; border-radius: 8px; padding: 10px 16px; font-weight: 500; cursor: pointer; transition: all 0.2s; }
+        .btn-secondary:hover { background: #E2E8F0; }
       `}</style>
 
       
 
       {/* Desktop Sidebar Navigation */}
-      <nav className="hidden md:flex flex-col w-40 bg-black text-white border-r-2 border-black overflow-y-auto">
-        <div className="p-4 heading text-sm" style={{ color: ACCENT }}>KOREA GRIND</div>
+      <nav className="hidden md:flex flex-col w-48 bg-gradient-to-b from-slate-900 to-slate-800 text-white border-r border-slate-700 overflow-y-auto">
+        <div className="px-4 py-5 border-b border-slate-700">
+        <div className="heading text-xs font-black text-slate-400 uppercase tracking-widest">Navigation</div>
+      </div>
         <NavBtn icon={<Target size={18} strokeWidth={2.5} />} label="home" active={activeTab === 'home'} onClick={() => setActiveTab('home')} />
         <NavBtn icon={<DollarSign size={18} strokeWidth={2.5} />} label="money" active={activeTab === 'money'} onClick={() => setActiveTab('money')} />
         <NavBtn icon={<Shield size={18} strokeWidth={2.5} />} label="cyber" active={activeTab === 'cyber'} onClick={() => setActiveTab('cyber')} />
@@ -180,20 +194,27 @@ export default function KoreaGrind() {
         </div>
       )}
 
-      <header className="sticky top-0 z-40 bg-white border-b-2 border-black">
-        <div className="px-5 md:px-8 py-4 flex items-center justify-between">
-          <div>
-            <div className="heading text-2xl leading-none">KOREA GRIND</div>
-            <div className="text-[10px] mono uppercase tracking-widest text-neutral-500 mt-1">// busan · sept 26</div>
+      <header className="sticky top-0 z-40 bg-white/80 backdrop-blur border-b border-slate-200">
+        <div className="px-5 md:px-8 py-5 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ background: ACCENT }}>
+              <Target size={20} className="text-white" strokeWidth={3} />
+            </div>
+            <div>
+              <div className="heading text-xl leading-none font-black">KOREA GRIND</div>
+              <div className="text-[10px] mono uppercase tracking-widest text-slate-500 mt-0.5">busan • sept 26</div>
+            </div>
           </div>
-          <div className="text-right">
-            <div className="mono text-[9px] uppercase tracking-widest text-neutral-500">days left</div>
-            <div className="heading text-3xl leading-none" style={{ color: ACCENT }}>{daysToKorea}</div>
+          <div className="card stat-card bg-white" style={{ padding: '12px 20px' }}>
+            <div className="text-center">
+              <div className="text-xs font-semibold text-slate-600 uppercase tracking-wide">Days Left</div>
+              <div className="heading text-2xl mt-1" style={{ color: ACCENT }}>{daysToKorea}</div>
+            </div>
           </div>
         </div>
       </header>
 
-      <main className="flex-1 overflow-y-auto px-5 md:px-8 py-5">
+      <main className="flex-1 overflow-y-auto px-4 md:px-8 py-6">
         {activeTab === 'home' && <Home data={data} saveData={saveData} netSaved={netSaved} savingsPercent={savingsPercent} weeklyTarget={weeklyTarget} weeksToKorea={weeksToKorea} daysToKorea={daysToKorea} today={today} checklistComplete={checklistComplete} checklistTotal={checklistTotal} checklistPercent={checklistPercent} setActiveTab={setActiveTab} triggerPulse={triggerPulse} pulse={pulse} />}
         {activeTab === 'money' && <Money data={data} saveData={saveData} netSaved={netSaved} totalIncome={totalIncome} totalExpenses={totalExpenses} savingsPercent={savingsPercent} weeklyTarget={weeklyTarget} triggerPulse={triggerPulse} pulse={pulse} />}
         {activeTab === 'cyber' && <Cyber data={data} saveData={saveData} triggerPulse={triggerPulse} pulse={pulse} />}
@@ -202,7 +223,7 @@ export default function KoreaGrind() {
         {activeTab === 'tips' && <Tips />}
       </main>
 
-      <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t-2 border-black z-50">
+      <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur border-t border-slate-200 z-50">
         <div className="grid grid-cols-6">
           <NavBtn icon={<Target size={18} strokeWidth={2.5} />} label="home" active={activeTab === 'home'} onClick={() => setActiveTab('home')} />
           <NavBtn icon={<DollarSign size={18} strokeWidth={2.5} />} label="money" active={activeTab === 'money'} onClick={() => setActiveTab('money')} />
@@ -222,11 +243,14 @@ export default function KoreaGrind() {
 
 function NavBtn({ icon, label, active, onClick }) {
   return (
-    <button onClick={onClick} className="py-3 flex flex-col items-center gap-1 transition-colors relative" style={{ color: active ? ACCENT : '#737373' }}>
-      {active && <div className="absolute top-0 left-0 right-0 h-0.5" style={{ background: ACCENT }}></div>}
-      {icon}
-      <span className="text-[9px] mono uppercase tracking-widest font-medium">{label}</span>
+    <button onClick={onClick} className={`w-full px-4 py-3 flex flex-col items-center gap-2 transition-all relative ${active ? 'bg-slate-100' : 'hover:bg-slate-50'}`} style={{ color: active ? ACCENT : '#94A3B8' }}>
+      {active && <div className="absolute left-0 top-0 bottom-0 w-1 rounded-full" style={{ background: ACCENT }}></div>}
+      <div className="transition-transform" style={{ transform: active ? 'scale(1.1)' : 'scale(1)' }}>
+        {icon}
+      </div>
+      <span className="text-[8px] font-semibold uppercase tracking-widest">{label}</span>
     </button>
+  );
   );
 }
 
